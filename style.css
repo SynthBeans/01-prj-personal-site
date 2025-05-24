@@ -103,7 +103,7 @@ section {
 .skills,
 .projects {
   background: none;         /* No background color */
-  box-shadow: 4px 8px 16px rgba(0,0,0,0.08); /* Shadow to bottom right */
+  box-shadow: 16px 16px 8px rgba(0,0,0,0.08); /* Shadow to bottom right */
   border-radius: 0;         /* No rounded corners */
   padding: 0;               /* No extra padding */
   max-width: 600px;         /* Keep text width readable */
@@ -157,138 +157,6 @@ section.hero > * {
     transform: scale(1);
     opacity: 1;
   }
-}
-
-/* Headings */
-h1, h2 {
-  margin-top: 0;
-}
-
-/* Skills list */
-.skills ul, .projects ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-/* Add some spacing between list items */
-li {
-  margin-bottom: 8px;
-}
-
-/* Floating circles on the top right */
-.floating-circles {
-  position: fixed; /* Stay in the same place even when scrolling */
-  top: 32px;       /* Distance from the top */
-  right: 60px;     /* Distance from the right */
-  display: flex;   /* Arrange circles in a row */
-  gap: 24px;       /* Space between circles */
-  z-index: 1000;   /* Make sure circles are above other content */
-}
-
-/* Style for each circle */
-.floating-circle {
-  width: 48px;
-  height: 48px;
-  background-color: #ca1919; /* Calm red color */
-  border-radius: 50%;        /* Make it a circle */
-  transition: transform 0.18s cubic-bezier(0.42, 0, 0.58, 1); /* Smoother scaling */
-  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.08); /* Soft red shadow */
-  cursor: pointer;           /* Show pointer on hover */
-}
-
-/* Swelling animation on hover */
-.floating-circle:hover,
-.floating-circle:hover .circle-icon {
-  transform: scale(1.1) !important; /* Make the circle and icon bigger, override animation */
-  transition: transform 0.18s cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-/* Style for icon inside the floating circle */
-.circle-icon {
-  display: block;              /* Makes the image a block element */
-  margin: auto;                /* Centers the image horizontally */
-  margin-top: 12px;            /* Centers the image vertically for 48px circle and 24px icon */
-  width: 24px;                 /* Icon width */
-  height: 24px;                /* Icon height */
-  transition: transform 0.18s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth scaling for icon */
-}
-
-/* Style for the welcome logo image in the hero section */
-.welcome-logo {
-  display: block;        /* Makes the image take up its own line */
-  margin: 0 auto 16px;   /* Center the image and add space below */
-  max-width: 800px;      /* Make the logo bigger for more impact */
-  height: auto;          /* Keep the image's aspect ratio */
-  
-}
-
-/* Make the Hard Skills and Soft Skills lists appear side by side */
-.skills-lists {
-  display: flex;              /* Place child elements in a row */
-  justify-content: center;    /* Center the lists horizontally */
-  gap: 40px;                  /* Space between the two lists */
-  margin-top: 16px;           /* Space above the lists */
-}
-
-/* Skills section container styles */
-.skills-container {
-  background:none;                /* White background */
-  border-radius: 8px;              /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
-  padding: 24px;
-  max-width: 600px;
-  margin: 32px auto;
-  text-align: center;              /* Center text */
-  cursor: pointer;                 /* Show pointer on hover */
-  transition: transform 0.3s;      /* Smooth swell animation */
-}
-
-/* Swell animation on hover */
-.skills-container:hover {
-  transform: scale(1.04);          /* Slightly enlarge on hover */
-}
-
-/* Hide the default section box for skills */
-section.skills {
-  background: none;
-  box-shadow: none;
-  padding: 0;
-  max-width: 100%;
-}
-
-/* When split, show the lists side by side and animate */
-.skills-container.split {
-  cursor: default;                 /* Remove pointer after click */
-  /* Optional: add a little more swell for effect */
-  transform: scale(1.06);
-  transition: transform 0.2s;
-}
-.skill-container.split:hover{
-  transform: scale(1.08);  
-  transition:transform 0.2s;        /* Keep the swell effect */
-}
-
-/* Show the skills lists as boxes when split */
-.skills-container.split .skills-lists {
-  display: flex !important;        /* Make sure lists are visible and side by side */
-  justify-content: center;
-  gap: 40px;
-  margin-top: 16px;
-}
-
-/* Each skills list box */
-.skills-list {
-  background: hsl(0, 92%, 28%);            /* Light background for each box */
-  border-radius: 8px;
-  padding: 16px 20px;
-  min-width: 160px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  text-align: left;                /* Align text to the left inside each box */
-}
-
-/* Hide the intro paragraph when split */
-.skills-container.split .skills-intro {
-  display: none;
 }
 
 /* Animation for hero image shrinking on load */
@@ -415,8 +283,11 @@ section.skills {
 /* Center only the heading inside the projects section */
 .projects > h2,
 .projects > h1 {
-  text-align: center;
-}
+  text-align: center;}
+  .projects > p {
+    text-align: center; /* Center the paragraph inside projects */
+  }
+
 
 /* Animate the comment box */
 .comment-box {
@@ -449,4 +320,49 @@ section.skills {
 /* Fourth (rightmost) circle */
 .floating-circles .floating-circle:nth-child(4) {
   animation-delay: 1.8s;
+}
+
+/* Container for the two project boxes */
+.projects-boxes {
+  display: flex;              /* Place boxes side by side */
+  justify-content: center;    /* Center the boxes horizontally */
+  gap: 24px;                  /* Space between the boxes */
+  margin-top: 24px;           /* Space above the boxes */
+}
+
+/* Style for each project box */
+.project-box {
+  background: hsl(0, 92%, 28%);            /* Same background as skills-list */
+  border-radius: 8px;
+  padding: 16px 20px;
+  min-width: 160px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  text-align: left;                /* Align text to the left inside each box */
+  color: #fff;                     /* White text for contrast */
+  font-size: 1.2rem;               /* Slightly larger text */
+  font-weight: bold;               /* Make the title bold */
+  flex: 1;                         /* Make both boxes equal width */
+}
+
+/* Hide the intro paragraph when split */
+.skills-container.split .skills-intro {
+  display: none;
+}
+
+/* Hide the intro paragraph when open */
+.projects-container.open .projects-intro {
+  display: none;
+}
+
+/* Socials section styles - same as bio section */
+.socials {
+  background: none;         /* No background color */
+  box-shadow: 16px 16px 8px rgba(0,0,0,0.08); /* Shadow to bottom right */
+  border-radius: 0;         /* No rounded corners */
+  padding: 0;               /* No extra padding */
+  max-width: 600px;         /* Keep text width readable */
+  margin: 32px auto;        /* Keep spacing */
+  text-align: center;       /* Center the text */
+  opacity: 0;               /* Start hidden for animation */
+  animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.9s 1 forwards; /* Starts after projects */
 }

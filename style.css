@@ -17,8 +17,6 @@ body {
   color: #222; /* Dark text for readability */
 }
 
-/* Import Komika Axis font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Komika+Axis&display=swap');
 
 /* Set Komika Axis as the font for all sections */
 section,
@@ -38,6 +36,14 @@ section * {
   border-radius: 50%; /* Makes the image a perfect circle */
   margin-top: 24px;
   margin-bottom: 16px;
+  /* Start centered using absolute positioning */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(2); /* Start large and centered */
+  z-index: 1;
+  animation:
+    heroImgShrink 0.7s cubic-bezier(0.6,0,0.4,1) 0s 1 forwards,
+    heroImgShiftRight 0.7s cubic-bezier(0.6,0,0.4,1) 1.1s 1 forwards; /* Shift right as comment box comes in */
 }
 
 /* Confine the hero section paragraph to a specific width and center it */
@@ -46,9 +52,42 @@ section * {
   margin: 0 auto;        /* Center the text block horizontally */
 }
 
-.hero-paragraph {
-  text-align: center;    /* Center the text inside the paragraph */
-  margin: 0;             /* Remove default margin for a cleaner look */
+/* Layout for hero content: comment box and hero image side by side */
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* Style for the comment box */
+.comment-box {
+  width: 200px;
+  min-height: 120px;
+  background: url('img/CommentBox.png') no-repeat center/contain; /* Show the comment box image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px 24px 32px;   /* Padding for text inside the box */
+  box-sizing: border-box;
+  opacity: 0;                     /* Start hidden for animation */
+  position: relative;
+  left: 0;
+  animation: commentBoxIn 0.7s cubic-bezier(0.6,0,0.4,1) 1.1s 1 forwards; /* Show after hero image and logo/text */
+}
+
+/* Style for the text inside the comment box */
+.comment-text {
+  font-size: 1.05rem;
+  color: #222;
+  text-align: topright;
+  line-height: 1.4;
+  font-family: 'Komika Axis', Arial, sans-serif;
+  /* Prevent text from overflowing the box */
+  word-break: break-word;
+  max-width: 220px;
 }
 
 /* Section styles */
@@ -200,15 +239,27 @@ section.skills {
 /* Animation for hero image shrinking on load */
 @keyframes heroImgShrink {
   0% {
-    transform: scale(2); /* Start large */
+    transform: translateX(-50%) scale(2);
     opacity: 0.7;
   }
   70% {
     opacity: 1;
   }
   100% {
-    transform: scale(1); /* End at normal size */
+    transform: translateX(-50%) scale(1);
     opacity: 1;
+  }
+}
+
+/* Animation for hero image shifting right when comment box appears */
+@keyframes heroImgShiftRight {
+  0% {
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    left: 50%;
+    transform: translateX(60px) scale(1); /* Move right to leave a gap */
   }
 }
 
@@ -242,10 +293,42 @@ section.skills {
   }
 }
 
+/* Animation for comment box flying in from the left */
+@keyframes commentBoxIn {
+  0% {
+    opacity: 0;
+    left: -80px;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+/* Keyframes for floating circles flying in from the right */
+@keyframes flyInRight {
+  0% {
+    transform: translateX(120px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Apply the animation to the hero image */
 .hero-img {
   /* ...existing code... */
-  animation: heroImgShrink 0.7s cubic-bezier(0.6,0,0.4,1) 0s 1;
+  animation:
+    heroImgShrink 0.7s cubic-bezier(0.6,0,0.4,1) 0s 1 forwards,
+    heroImgShiftRight 0.7s cubic-bezier(0.6,0,0.4,1) 1.1s 1 forwards; /* Shift right as comment box comes in */
 }
 
 /* Animate the welcome logo and hero text */
@@ -271,43 +354,34 @@ section.skills {
   animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.6s 1 forwards; /* Starts after skills */
 }
 
-/* Keyframes for floating circles flying in from the right */
-@keyframes flyInRight {
-  0% {
-    transform: translateX(120px);
-    opacity: 0;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
+/* Animate the comment box */
+.comment-box {
+  animation: commentBoxIn 0.7s cubic-bezier(0.6,0,0.4,1) 1.1s 1 forwards; /* Show after hero image and logo/text */
 }
 
 /* Animate each floating circle with a delay so they come in one at a time */
 .floating-circles .floating-circle {
   opacity: 0; /* Start hidden */
-  animation: flyInRight 0.6s cubic-bezier(0.6,0,0.4,1) forwards;
+  animation: flyInRight 0.6s cubic-bezier(0.6,0,0.4,1) 1s 1 forwards;
+  
 }
 
 /* First (leftmost) circle */
 .floating-circles .floating-circle:nth-child(1) {
-  animation-delay: 0.2s;
+  animation-delay: 1.2s;
 }
 
 /* Second circle */
 .floating-circles .floating-circle:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 1.4s;
 }
 
 /* Third circle */
 .floating-circles .floating-circle:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 1.6s;
 }
 
 /* Fourth (rightmost) circle */
 .floating-circles .floating-circle:nth-child(4) {
-  animation-delay: 0.8s;
+  animation-delay: 1.8s;
 }

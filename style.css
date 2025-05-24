@@ -17,9 +17,21 @@ body {
 }
 
 .hero-img {
-  width: 120px;
+  width: 160px;
   border-radius: 50%; /* Makes the image a perfect circle */
+  margin-top: 24px;
   margin-bottom: 16px;
+}
+
+/* Confine the hero section paragraph to a specific width and center it */
+.hero-text {
+  max-width: 400px;      /* Limit the width of the text */
+  margin: 0 auto;        /* Center the text block horizontally */
+}
+
+.hero-paragraph {
+  text-align: center;    /* Center the text inside the paragraph */
+  margin: 0;             /* Remove default margin for a cleaner look */
 }
 
 /* Section styles */
@@ -88,4 +100,13 @@ li {
   margin-top: 12px;            /* Centers the image vertically for 48px circle and 24px icon */
   width: 24px;                 /* Icon width */
   height: 24px;                /* Icon height */
+}
+
+/* Style for the welcome logo image in the hero section */
+.welcome-logo {
+  display: block;        /* Makes the image take up its own line */
+  margin: 0 auto 16px;   /* Center the image and add space below */
+  max-width: 620px;      /* Make the logo bigger for more impact */
+  height: auto;          /* Keep the image's aspect ratio */
+  
 }

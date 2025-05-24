@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif; /* Sets a clean, modern font */
-  background-color: #f9f9f9; /* Light background color */
+  background-color: #ff8383; /* Light background color */
   color: #222; /* Dark text for readability */
 }
 
@@ -109,4 +109,147 @@ li {
   max-width: 620px;      /* Make the logo bigger for more impact */
   height: auto;          /* Keep the image's aspect ratio */
   
+}
+
+/* Make the Hard Skills and Soft Skills lists appear side by side */
+.skills-lists {
+  display: flex;              /* Place child elements in a row */
+  justify-content: center;    /* Center the lists horizontally */
+  gap: 40px;                  /* Space between the two lists */
+  margin-top: 16px;           /* Space above the lists */
+}
+
+/* Skills section container styles */
+.skills-container {
+  background: #fff;                /* White background */
+  border-radius: 8px;              /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+  padding: 24px;
+  max-width: 600px;
+  margin: 32px auto;
+  text-align: center;              /* Center text */
+  cursor: pointer;                 /* Show pointer on hover */
+  transition: transform 0.3s;      /* Smooth swell animation */
+}
+
+/* Swell animation on hover */
+.skills-container:hover {
+  transform: scale(1.04);          /* Slightly enlarge on hover */
+}
+
+/* Hide the default section box for skills */
+section.skills {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  max-width: 100%;
+}
+
+/* When split, show the lists side by side and animate */
+.skills-container.split {
+  cursor: default;                 /* Remove pointer after click */
+  /* Optional: add a little more swell for effect */
+  transform: scale(1.06);
+  transition: transform 0.2s;
+}
+.skill-container.split:hover{
+  transform: scale(1.08);  
+  transition:transform 0.2s;        /* Keep the swell effect */
+}
+
+/* Show the skills lists as boxes when split */
+.skills-container.split .skills-lists {
+  display: flex !important;        /* Make sure lists are visible and side by side */
+  justify-content: center;
+  gap: 40px;
+  margin-top: 16px;
+}
+
+/* Each skills list box */
+.skills-list {
+  background: hsl(0, 100%, 67%);            /* Light background for each box */
+  border-radius: 8px;
+  padding: 16px 20px;
+  min-width: 160px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  text-align: left;                /* Align text to the left inside each box */
+}
+
+/* Hide the intro paragraph when split */
+.skills-container.split .skills-intro {
+  display: none;
+}
+
+/* Animation for hero image shrinking on load */
+@keyframes heroImgShrink {
+  0% {
+    transform: scale(2); /* Start large */
+    opacity: 0.7;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1); /* End at normal size */
+    opacity: 1;
+  }
+}
+
+/* Animation for hero text sliding up on load */
+@keyframes heroTextUp {
+  0% {
+    transform: translateY(60px); /* Start below */
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0); /* End at normal position */
+    opacity: 1;
+  }
+}
+
+/* Animation for sections sliding in from below */
+@keyframes sectionSlideUp {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the hero image */
+.hero-img {
+  /* ...existing code... */
+  animation: heroImgShrink 0.7s cubic-bezier(0.6,0,0.4,1) 0s 1;
+}
+
+/* Animate the welcome logo and hero text */
+.welcome-logo,
+.hero-text {
+  opacity: 0; /* Start hidden, will be shown by animation */
+  animation: heroTextUp 0.7s cubic-bezier(0.6,0,0.4,1) 0.3s 1 forwards;
+}
+
+/* Apply the slide-in animation to each section with different delays */
+.bio {
+  opacity: 0; /* Start hidden */
+  animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1s 1 forwards; /* Starts after hero */
+}
+
+.skills {
+  opacity: 0;
+  animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.3s 1 forwards; /* Starts after bio */
+}
+
+.projects {
+  opacity: 0;
+  animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.6s 1 forwards; /* Starts after skills */
 }

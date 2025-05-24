@@ -13,9 +13,21 @@
       <!-- Home icon image in the center of the circle -->
       <img src="img/HomeIcon.png" alt="Home" class="circle-icon">
     </div>
-    <div class="floating-circle"></div>
-    <div class="floating-circle"></div>
-    <div class="floating-circle"></div>
+    <!-- Second to left circle with heart icon inside -->
+    <div class="floating-circle">
+      <!-- Heart icon image in the center of the circle -->
+      <img src="img/hearticon.png" alt="Heart" class="circle-icon">
+    </div>
+    <!-- Next circle with project emoji inside -->
+    <div class="floating-circle">
+      <!-- Project emoji image in the center of the circle -->
+      <img src="img/projectemoji.png" alt="Projects" class="circle-icon">
+    </div>
+    <!-- Rightmost circle with social emoji inside -->
+    <div class="floating-circle">
+      <!-- Social emoji image in the center of the circle -->
+      <img src="img/socialemoji.png" alt="Social" class="circle-icon">
+    </div>
   </div>
   <!-- Hero Section -->
   <section class="hero">
@@ -37,14 +49,38 @@
   </section>
 
   <!-- Skills Section -->
-  <section class="skills">
-    <h2>My Skills</h2>
-    <ul>
-      <li>HTML (beginner)</li>
-      <li>CSS (beginner)</li>
-      <li>Teamwork</li>
-      <li>Problem Solving</li>
-    </ul>
+  <section class="skills" id="skills-section">
+    <div class="skills-container" id="skills-container">
+      <h2>My Skills</h2>
+      <!-- Paragraph for the intro -->
+      <p class="skills-intro">
+        Here are some of my technical and personal skills. Click this box to see more details!
+      </p>
+      <!-- Hidden details, shown after click -->
+      <div class="skills-lists" id="skills-lists" style="display: none;">
+        <!-- Hard Skills list -->
+        <div class="skills-list">
+          <h3>Hard Skills</h3>
+          <ul>
+            <li>HTML (beginner)</li>
+            <li>CSS (beginner)</li>
+            <li>Certified in C</li>
+            <li>Certified in Matlab and Simulink</li>
+            <li>Certified in Solidworks and AutoCAD</li>
+          </ul>
+        </div>
+        <!-- Soft Skills list -->
+        <div class="skills-list">
+          <h3>Soft Skills</h3>
+          <ul>
+            <li>Teamwork</li>
+            <li>Problem Solving</li>
+            <li>Leadership</li>
+            <li>Creativity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Portfolio/Projects Section -->
@@ -56,5 +92,27 @@
       <li>Project 2: Coming Soon!</li>
     </ul>
   </section>
+
+  <script>
+    // filepath: /workspaces/01-prj-personal-site/index.html
+    // This script toggles the skills box between collapsed and split states
+    const skillsContainer = document.getElementById('skills-container');
+    const skillsLists = document.getElementById('skills-lists');
+    const skillsIntro = document.querySelector('.skills-intro');
+
+    skillsContainer.addEventListener('click', function() {
+      // Toggle the split class
+      skillsContainer.classList.toggle('split');
+      // If split is active, show lists and hide intro
+      if (skillsContainer.classList.contains('split')) {
+        skillsIntro.style.display = 'none';
+        skillsLists.style.display = 'flex';
+      } else {
+        // If split is not active, show intro and hide lists
+        skillsIntro.style.display = 'block';
+        skillsLists.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

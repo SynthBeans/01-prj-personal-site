@@ -1090,3 +1090,65 @@ section.hero > * {
 .projects-container.open .projects-intro {
   display: none;
 }
+/* White box for Freeclown.png on the left side */
+/* The box is 4px bigger on each side than the image */
+/* ...existing code... */
+
+/* Small white circle button on the top right corner of the clown image */
+.clown-close {
+  width: 20px;                  /* Small circle size */
+  height: 20px;
+  background: #fff;             /* White background */
+  border: 2px solid #ccc;       /* Light border */
+  border-radius: 50%;           /* Make it a circle */
+  position: absolute;           /* Place it over the box */
+  top: -10px;                   /* A little space from the top */
+  right: -10px;                 /* A little space from the right */
+  cursor: pointer;              /* Show pointer on hover */
+  z-index: 2;                   /* Above the image */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  display: flex;                /* Use flex to center the image */
+  align-items: center;          /* Center vertically */
+  justify-content: center;      /* Center horizontally */
+}
+
+.close-icon {
+  width: 12px;                  /* Make the icon smaller than the circle */
+  height: 12px;
+  display: block;               /* Remove extra space below the image */
+}
+@keyframes fadeInClown {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Make sure the clown-box is positioned relative for the close button */
+/* Style for the clown box and fade-in animation */
+.clown-box {
+  position: fixed;              /* Keep the box in the same place on the screen */
+  left: 16px;                   /* Distance from the left edge */
+  top: 50%;                     /* Center vertically */
+  transform: translateY(-50%);  /* Perfect vertical centering */
+  background-color: white;      /* White background */
+  padding: 4px;                 /* Space around the image */
+  border: 1px solid #ccc;       /* Light border */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Soft shadow */
+  display: inline-block;        /* Only as wide as needed */
+  z-index: 100;                 /* Show above other content */
+  opacity: 0;                   /* Start invisible */
+  transition: opacity 0.1s;     /* Smooth opacity change */
+  animation: fadeInClown 0.5s ease 5s forwards; /* Fade in after 5 seconds */
+}
+
+/* Make sure the image fits inside the box */
+.clown-img {
+  display: block;
+  width: 300px;    /* Set the image width to 60 pixels (you can adjust this number) */
+  height: auto;   /* Keep the image's aspect ratio */
+}
+/* Fade-in animation for the clown box */
+/* Fade-in animation for the clown box */
+
+
+
+
+

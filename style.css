@@ -64,13 +64,13 @@ section * {
 
 /* Style for the comment box */
 .comment-box {
-  width: 200px;
-  min-height: 120px;
+  width: 300px;
+  min-height: 200px;
   background: url('img/CommentBox.png') no-repeat center/contain; /* Show the comment box image */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 24px 24px 32px;   /* Padding for text inside the box */
+  padding: 8px 24px 80px 8px;   /* Padding for text inside the box */
   box-sizing: border-box;
   opacity: 0;                     /* Start hidden for animation */
   position: relative;
@@ -80,9 +80,9 @@ section * {
 
 /* Style for the text inside the comment box */
 .comment-text {
-  font-size: 1.05rem;
+  font-size: 0.8rem;
   color: #222;
-  text-align: topright;
+  text-align: left;
   line-height: 1.4;
   font-family: 'Komika Axis', Arial, sans-serif;
   /* Prevent text from overflowing the box */

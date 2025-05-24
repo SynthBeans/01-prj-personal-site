@@ -117,9 +117,9 @@
     </p>
     <!-- Social links for beginners -->
     <ul>
-      <li>Email: jacob@example.com</li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">My LinkedIn</a></li>
-      <li>GitHub: <a href="https://github.com/" target="_blank">My GitHub</a></li>
+      <li>Email: jacobr2@usf.edu</li>
+      <li>LinkedIn: <a href="www.linkedin.com/in/jacoberauscher" target="_blank">My LinkedIn</a></li>
+      <li>GitHub: <a href="hhttps://github.com/SynthBeans" target="_blank">My GitHub</a></li>
     </ul>
   </section>
 
@@ -162,7 +162,36 @@
       }
     });
 
-    // Optional: Add a hover effect for animation (handled in CSS)
+    // Scroll to top when the leftmost floating circle is clicked
+    const homeCircle = document.querySelector('.floating-circles .floating-circle');
+    homeCircle.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll to top
+    });
+
+    // Scroll to the skills section when the 2nd floating circle is clicked
+    const skillsCircle = document.querySelectorAll('.floating-circles .floating-circle')[1];
+    skillsCircle.addEventListener('click', function() {
+      // Scroll to the element with id "skills-section" and center it
+      const skillsSection = document.getElementById('skills-section');
+      skillsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Scroll to the projects section when the 3rd floating circle is clicked
+    const projectsCircle = document.querySelectorAll('.floating-circles .floating-circle')[2];
+    projectsCircle.addEventListener('click', function() {
+      // Scroll to the element with id "projects-section" and center it
+      const projectsSection = document.getElementById('projects-section');
+      projectsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Scroll to the socials section when the rightmost floating circle is clicked
+    const socialsCircle = document.querySelectorAll('.floating-circles .floating-circle')[3];
+    socialsCircle.addEventListener('click', function() {
+      // Scroll to the Socials section and center it
+      const socialsSection = document.querySelector('.socials');
+      socialsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
   </script>
 </body>
 </html>

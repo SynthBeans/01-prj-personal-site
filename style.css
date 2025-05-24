@@ -830,7 +830,8 @@ section {
 /* Remove box styles for bio, skills, and projects sections */
 .bio,
 .skills,
-.projects {
+.projects,
+.socials {
   background: none;         /* No background color */
   box-shadow: 16px 16px 8px rgba(0,0,0,0.08); /* Shadow to bottom right */
   border-radius: 0;         /* No rounded corners */
@@ -1009,6 +1010,13 @@ section.hero > * {
   animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.6s 1 forwards; /* Starts after skills */
 }
 
+.socials {
+  text-align: Center;
+  opacity: 0; /* Start hidden */
+  animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.9s 1 forwards; /* Starts after hero */
+
+  
+}
 /* Center only the heading inside the projects section */
 .projects > h2,
 .projects > h1 {

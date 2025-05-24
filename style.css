@@ -12,13 +12,13 @@ body {
 /* Hero section styles */
 .hero {
   text-align: center; /* Center the content */
-  background-color: #e0f7fa; /* Light blue background */
+  background-color: #b11818; /* Light blue background */
   padding: 40px 20px;
 }
 
 .hero-img {
   width: 120px;
-  border-radius: 50%; /* Makes the image round */
+  border-radius: 50%; /* Makes the image a perfect circle */
   margin-bottom: 16px;
 }
 
@@ -30,6 +30,13 @@ section {
   padding: 24px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+section.hero{
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #a7a7a7; /* Light grey background that stretches across the screen */
+  padding: 24px;
 }
 
 /* Headings */
@@ -51,18 +58,18 @@ li {
 /* Floating circles on the top right */
 .floating-circles {
   position: fixed; /* Stay in the same place even when scrolling */
-  top: 24px;       /* Distance from the top */
-  right: 32px;     /* Distance from the right */
+  top: 32px;       /* Distance from the top */
+  right: 60px;     /* Distance from the right */
   display: flex;   /* Arrange circles in a row */
-  gap: 16px;       /* Space between circles */
+  gap: 24px;       /* Space between circles */
   z-index: 1000;   /* Make sure circles are above other content */
 }
 
 /* Style for each circle */
 .floating-circle {
-  width: 28px;
-  height: 28px;
-  background-color: #ffb3b3; /* Calm red color */
+  width: 48px;
+  height: 48px;
+  background-color: #ca1919; /* Calm red color */
   border-radius: 50%;        /* Make it a circle */
   transition: transform 0.3s; /* Smooth animation for swelling */
   box-shadow: 0 2px 8px rgba(255, 0, 0, 0.08); /* Soft red shadow */
@@ -72,4 +79,13 @@ li {
 /* Swelling animation on hover */
 .floating-circle:hover {
   transform: scale(1.25); /* Make the circle bigger */
+}
+
+/* Style for icon inside the floating circle */
+.circle-icon {
+  display: block;              /* Makes the image a block element */
+  margin: auto;                /* Centers the image horizontally */
+  margin-top: 12px;            /* Centers the image vertically for 48px circle and 24px icon */
+  width: 24px;                 /* Icon width */
+  height: 24px;                /* Icon height */
 }

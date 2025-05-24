@@ -1136,7 +1136,7 @@ section.hero > * {
   z-index: 100;                 /* Show above other content */
   opacity: 0;                   /* Start invisible */
   transition: opacity 0.1s;     /* Smooth opacity change */
-  animation: fadeInClown 0.5s ease 5s forwards; /* Fade in after 5 seconds */
+ /* animation: fadeInClown 0.5s ease 5s forwards; /* Fade in after 5 seconds */
 }
 
 /* Make sure the image fits inside the box */
@@ -1148,7 +1148,24 @@ section.hero > * {
 /* Fade-in animation for the clown box */
 /* Fade-in animation for the clown box */
 
+/* Animation for fading out the clown box and its contents */
+@keyframes fadeOutClown {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 
 
+/* ...existing code... */
 
+/* Fade out the clown box after 15 seconds */
+.clown-box,
+.clown-close,
+.close-icon,
+.clown-img {
+  /* Fade in after 5 seconds (already set for clown-box) */
+  /* Fade out after 15 seconds */
+  animation:
+    fadeInClown 0.5s ease 7s forwards,   /* Fade in after 5s */
+    fadeOutClown 0.5s ease 15s forwards; /* Fade out after 15s */
+}
 

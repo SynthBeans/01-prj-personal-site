@@ -9,8 +9,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif; /* Sets a clean, modern font */
-  background-color: #ff8383; /* Light background color */
-  color: #222; /* Dark text for readability */
+  background-color: #b11818; /* Light background color */
+  color: #ffffff; /* Dark text for readability */
 }
 
 
@@ -28,7 +28,7 @@ section * {
 }
 
 .hero-img {
-  width: 160px;
+  width: 175px;
   border-radius: 50%; /* Makes the image a perfect circle */
   margin-top: 24px;
   margin-bottom: 16px;
@@ -97,12 +97,66 @@ section {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
 }
+
+/* Remove box styles for bio, skills, and projects sections */
+.bio,
+.skills,
+.projects {
+  background: none;         /* No background color */
+  box-shadow: 4px 8px 16px rgba(0,0,0,0.08); /* Shadow to bottom right */
+  border-radius: 0;         /* No rounded corners */
+  padding: 0;               /* No extra padding */
+  max-width: 600px;         /* Keep text width readable */
+  margin: 32px auto;        /* Keep spacing */
+}
+
 section.hero{
   max-width: 100%;
   margin: 0;
   padding: 0;
-  background: #a7a7a7; /* Light grey background that stretches across the screen */
+  /* The background color stays as a fallback */
+  background: #a7a7a7;
   padding: 24px;
+  position: relative; /* Needed for the pseudo-element to be positioned correctly */
+}
+
+/* Add a spiderweb overlay using a pseudo-element */
+section.hero::before {
+  content: "";
+  position: absolute; /* Position over the hero section */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('img/Spiderweb.png') center center/cover no-repeat;
+  opacity: 0.8; /* You can lower this for a more subtle effect */
+  z-index: 0; /* Place behind the content */
+  /* Start super small, so it's hidden behind the logo at first */
+  transform: scale(0.05); /* Very small at the start */
+  animation: spiderwebExpand 0.8s cubic-bezier(0.8,0,0.4,1) 0.8s forwards;
+  /* Smooth animation for expanding */
+  pointer-events: none; /* Allow clicks through the overlay */
+}
+
+/* Make sure hero content is above the spiderweb */
+section.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation for expanding the spiderweb */
+@keyframes spiderwebExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.2;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Headings */
@@ -137,14 +191,16 @@ li {
   height: 48px;
   background-color: #ca1919; /* Calm red color */
   border-radius: 50%;        /* Make it a circle */
-  transition: transform 0.3s; /* Smooth animation for swelling */
+  transition: transform 0.18s cubic-bezier(0.42, 0, 0.58, 1); /* Smoother scaling */
   box-shadow: 0 2px 8px rgba(255, 0, 0, 0.08); /* Soft red shadow */
   cursor: pointer;           /* Show pointer on hover */
 }
 
 /* Swelling animation on hover */
-.floating-circle:hover {
-  transform: scale(1.25); /* Make the circle bigger */
+.floating-circle:hover,
+.floating-circle:hover .circle-icon {
+  transform: scale(1.1) !important; /* Make the circle and icon bigger, override animation */
+  transition: transform 0.18s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 /* Style for icon inside the floating circle */
@@ -154,13 +210,14 @@ li {
   margin-top: 12px;            /* Centers the image vertically for 48px circle and 24px icon */
   width: 24px;                 /* Icon width */
   height: 24px;                /* Icon height */
+  transition: transform 0.18s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth scaling for icon */
 }
 
 /* Style for the welcome logo image in the hero section */
 .welcome-logo {
   display: block;        /* Makes the image take up its own line */
   margin: 0 auto 16px;   /* Center the image and add space below */
-  max-width: 620px;      /* Make the logo bigger for more impact */
+  max-width: 800px;      /* Make the logo bigger for more impact */
   height: auto;          /* Keep the image's aspect ratio */
   
 }
@@ -175,7 +232,7 @@ li {
 
 /* Skills section container styles */
 .skills-container {
-  background: #fff;                /* White background */
+  background:none;                /* White background */
   border-radius: 8px;              /* Rounded corners */
   box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
   padding: 24px;
@@ -221,7 +278,7 @@ section.skills {
 
 /* Each skills list box */
 .skills-list {
-  background: hsl(0, 100%, 67%);            /* Light background for each box */
+  background: hsl(0, 92%, 28%);            /* Light background for each box */
   border-radius: 8px;
   padding: 16px 20px;
   min-width: 160px;
@@ -338,8 +395,10 @@ section.skills {
 
 /* Apply the slide-in animation to each section with different delays */
 .bio {
+  text-align: Center;
   opacity: 0; /* Start hidden */
   animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1s 1 forwards; /* Starts after hero */
+  
 }
 
 .skills {
@@ -348,8 +407,15 @@ section.skills {
 }
 
 .projects {
+  
   opacity: 0;
   animation: sectionSlideUp 0.7s cubic-bezier(0.6,0,0.4,1) 1.6s 1 forwards; /* Starts after skills */
+}
+
+/* Center only the heading inside the projects section */
+.projects > h2,
+.projects > h1 {
+  text-align: center;
 }
 
 /* Animate the comment box */
@@ -361,6 +427,7 @@ section.skills {
 .floating-circles .floating-circle {
   opacity: 0; /* Start hidden */
   animation: flyInRight 0.6s cubic-bezier(0.6,0,0.4,1) 1s 1 forwards;
+  animation-fill-mode: forwards; /* Keep the final state after animation */
   
 }
 

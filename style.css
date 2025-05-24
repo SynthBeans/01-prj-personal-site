@@ -1,1 +1,75 @@
 /* Add you CSS here */
+
+/* Basic reset for margins and padding */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Sets a clean, modern font */
+  background-color: #f9f9f9; /* Light background color */
+  color: #222; /* Dark text for readability */
+}
+
+/* Hero section styles */
+.hero {
+  text-align: center; /* Center the content */
+  background-color: #e0f7fa; /* Light blue background */
+  padding: 40px 20px;
+}
+
+.hero-img {
+  width: 120px;
+  border-radius: 50%; /* Makes the image round */
+  margin-bottom: 16px;
+}
+
+/* Section styles */
+section {
+  max-width: 600px;
+  margin: 32px auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+/* Headings */
+h1, h2 {
+  margin-top: 0;
+}
+
+/* Skills list */
+.skills ul, .projects ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* Add some spacing between list items */
+li {
+  margin-bottom: 8px;
+}
+
+/* Floating circles on the top right */
+.floating-circles {
+  position: fixed; /* Stay in the same place even when scrolling */
+  top: 24px;       /* Distance from the top */
+  right: 32px;     /* Distance from the right */
+  display: flex;   /* Arrange circles in a row */
+  gap: 16px;       /* Space between circles */
+  z-index: 1000;   /* Make sure circles are above other content */
+}
+
+/* Style for each circle */
+.floating-circle {
+  width: 28px;
+  height: 28px;
+  background-color: #ffb3b3; /* Calm red color */
+  border-radius: 50%;        /* Make it a circle */
+  transition: transform 0.3s; /* Smooth animation for swelling */
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.08); /* Soft red shadow */
+  cursor: pointer;           /* Show pointer on hover */
+}
+
+/* Swelling animation on hover */
+.floating-circle:hover {
+  transform: scale(1.25); /* Make the circle bigger */
+}

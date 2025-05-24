@@ -1,11 +1,7 @@
 /* Add you CSS here */
-@font-face {
-  font-family: 'Komika Axis';
-  src: url('fonts/KomikaAxis.ttf') format('truetype');
-}
 
 body {
-  font-family: 'Komika Axis', sans-serif;
+  font-family: 'Whizbang', 'Comic Sans MS', sans-serif;
 }
 
 /* Basic reset for margins and padding */
@@ -21,7 +17,7 @@ body {
 /* Set Komika Axis as the font for all sections */
 section,
 section * {
-  font-family: 'Komika Axis', Arial, sans-serif; /* Use Komika Axis for all text in sections */
+  font-family: 'Whizbang', 'Comic Sans MS', sans-serif; /* Use Komika Axis for all text in sections */
 }
 
 /* Hero section styles */
@@ -82,11 +78,11 @@ section * {
 
 /* Style for the text inside the comment box */
 .comment-text {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #222;
   text-align: left;
   line-height: 1.4;
-  font-family: 'Komika Axis', Arial, sans-serif;
+  font-family: 'Komika Axis', 'Comic Sans MS', sans-serif;
   /* Prevent text from overflowing the box */
   word-break: break-word;
   max-width: 220px;

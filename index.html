@@ -90,13 +90,23 @@
   </section>
 
   <!-- Portfolio/Projects Section -->
-  <section class="projects">
-    <h2>My Projects</h2>
-    <ul>
-      <!-- Add your projects here as you complete them -->
-      <li>Project 1: Coming Soon!</li>
-      <li>Project 2: Coming Soon!</li>
-    </ul>
+  <section class="projects" id="projects-section">
+    <div class="projects-container" id="projects-container">
+      <h2>My Projects</h2>
+      <!-- Paragraph for the intro -->
+      <p class="projects-intro">
+        A list of my Web Development projects will be added here as I progress through the course. Click this box to see more details!
+      </p>
+      <!-- Project boxes, hidden at first -->
+      <div class="projects-boxes" id="projects-boxes" style="display: none;">
+        <div class="project-box">
+          Project Title 1
+        </div>
+        <div class="project-box">
+          Project Title 2
+        </div>
+      </div>
+    </div>
   </section>
 
   <script>
@@ -119,6 +129,26 @@
         skillsLists.style.display = 'none';
       }
     });
+
+    // --- Projects section toggle logic for beginners ---
+    // Get the projects container, intro, and boxes
+    const projectsContainer = document.getElementById('projects-container');
+    const projectsIntro = document.querySelector('.projects-intro');
+    const projectsBoxes = document.getElementById('projects-boxes');
+
+    // When you click the projects container, toggle open/close
+    projectsContainer.addEventListener('click', function() {
+      projectsContainer.classList.toggle('open');
+      if (projectsContainer.classList.contains('open')) {
+        projectsIntro.style.display = 'none';
+        projectsBoxes.style.display = 'flex';
+      } else {
+        projectsIntro.style.display = 'block';
+        projectsBoxes.style.display = 'none';
+      }
+    });
+
+    // Optional: Add a hover effect for animation (handled in CSS)
   </script>
 </body>
 </html>
